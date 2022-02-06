@@ -8,18 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 
-  @media (max-width: 1080px) {
-    html,
-    #root {
-      font-size: 93.75%;
-    }
+  :root {
+    --gray-500: #373737;
+    --black-900: #111111;
   }
 
-  @media (max-width: 720px) {
-    html,
-    #root {
-      font-size: 87.5%;
-    }
+  html, body, #root {
+    height: 100%;
   }
 
   body,
