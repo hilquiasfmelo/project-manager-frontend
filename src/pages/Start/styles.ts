@@ -57,24 +57,20 @@ export const EntryCardItem = styled.div<IEntryCardItemProps>`
     props.background
       ? css`
           background: ${props.background};
-          color: #fff;
 
           &:hover {
             background: ${shade(0.2, props.background)};
-            color: ${shade(0.2, '#fff')};
-            transition: shade 0.4s;
-            transition: color 0.2s;
+            transition: background 0.4s;
           }
         `
       : css`
-          background: #00e676;
+          background: var(--green-500);
 
           &:hover {
             background: ${shade(0.2, '#00E676')};
             transition: background 0.4s;
-          }
+          } */
         `}
-
   span {
     font-weight: bold;
   }

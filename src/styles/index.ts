@@ -9,8 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
+    --white: #FFFFFF;
+
     --gray-500: #373737;
     --black-900: #111111;
+    --green-500: #00e676;
   }
 
   html, body, #root {

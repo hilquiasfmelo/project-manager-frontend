@@ -15,7 +15,7 @@ export const Start: React.FC = () => {
           <FaCode size={50} />
           <span>Entrar como Dev</span>
         </EntryCardItem>
-        <EntryCardItem background="#111">
+        <EntryCardItem color="#FFF" background="#111">
           <FaUser size={50} />
           <span>Entrar como Client</span>
         </EntryCardItem>
