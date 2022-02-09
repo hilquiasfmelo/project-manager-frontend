@@ -1,30 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaCode } from 'react-icons/fa';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import { Container, Content, Background, Form, FormActions } from './styles';
 
-export const SignInDev: React.FC = () => {
+export const SignInClient: React.FC = () => {
   return (
     <Container>
+      <Background />
+
       <Content>
         <Form>
-          <h1>Login como Dev</h1>
-          <Input icon={FaEnvelope} type="email" placeholder="Entre com seu e-mail" required />
-          <Input icon={FaLock} type="password" isPassword placeholder="Senha" required />
+          <h1>Login como Client</h1>
+          <Input icon={FaCode} type="text" placeholder="Digite seu código" required />
 
           <Button>Entrar</Button>
 
           <FormActions>
-            <Link to="/sign-up">Faça seu cadastro</Link>
             <Link to="/">Voltar</Link>
           </FormActions>
         </Form>
       </Content>
-      <Background />
     </Container>
   );
 };

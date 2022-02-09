@@ -28,12 +28,13 @@ interface IEntryCardItemProps {
   background?: string;
 }
 
-export const EntryCardItem = styled.div<IEntryCardItemProps>`
+export const EntryCardItem = styled.button<IEntryCardItemProps>`
   width: 200px;
   height: 230px;
   padding: 10px;
 
   border-radius: 4px;
+  border: 0;
   margin: 5px;
   color: var(--black-900);
 
@@ -49,7 +50,7 @@ export const EntryCardItem = styled.div<IEntryCardItemProps>`
 
       &:hover {
         color: ${shade(0.2, props.color)};
-        transition: color 0.4s;
+        transition: 0.4s;
       }
     `}
 
@@ -60,7 +61,7 @@ export const EntryCardItem = styled.div<IEntryCardItemProps>`
 
           &:hover {
             background: ${shade(0.2, props.background)};
-            transition: background 0.4s;
+            transition: 0.4s;
           }
         `
       : css`
@@ -68,8 +69,8 @@ export const EntryCardItem = styled.div<IEntryCardItemProps>`
 
           &:hover {
             background: ${shade(0.2, '#00E676')};
-            transition: background 0.4s;
-          } */
+            transition: 0.4s;
+          }
         `}
   span {
     font-weight: bold;
