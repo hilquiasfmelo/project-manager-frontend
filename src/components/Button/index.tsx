@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import { Container } from './sytles';
 
-export const Button: React.FC = ({ children }) => {
+type IButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const Button: React.FC<IButtonProps> = ({ children, ...rest }) => {
   return (
-    <Container>
+    <Container {...rest}>
       {children}
     </Container>
   )

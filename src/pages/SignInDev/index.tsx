@@ -19,7 +19,7 @@ export const SignInDev: React.FC = () => {
           <Button>Entrar</Button>
 
           <FormActions>
-            <Link to="/sign-up">Faça seu cadastro</Link>
+            <Link to="/sign-up/dev">Faça seu cadastro</Link>
             <Link to="/">Voltar</Link>
           </FormActions>
         </Form>
