@@ -1,4 +1,6 @@
 import React, { createContext, useCallback, useState } from "react";
+import { ICredentialsDev } from "../interfaces/ICredentialsDev";
+import { api } from "../services/api";
 
 /**
  * Interface que recebe os métodos e variáveis
@@ -6,7 +8,7 @@ import React, { createContext, useCallback, useState } from "react";
  */
 interface IAuthContextState {
   user: IUser;
-  signInDev(): Promise<void>;
+  signInDev(credentials: ICredentialsDev): Promise<void>;
 }
 
 // Interface que recebera os atributos do user
@@ -25,10 +27,10 @@ interface IAuthStateResponse {
   token: string;
 }
 
-// Criação do Contexto de Autenticação
-const AuthContext = createContext<IAuthContextState>({} as IAuthContextState);
+// Criação do Contexto de Autenticação que se disponibilizará para toda a aplicação
+export const AuthContext = createContext<IAuthContextState>({} as IAuthContextState);
 
-// Função que receberá o contexto
+// Função que receberá o contexto e se disponibilizará para toda a aplicação
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<IAuthStateResponse>(() => {
     // Guarda as variáveis no LocalStorage do Navegador
@@ -44,7 +46,20 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as IAuthStateResponse;
   });
 
-  const signInDev = useCallback(async () => { }, []);
+  // Função que recebe as credenciais do user para que ele se logue na aplicação
+  const signInDev = useCallback(async (credentials: ICredentialsDev) => {
+    const response = await api.post('/session', credentials);
+
+    const { user, token } = response.data;
+
+    localStorage.setItem('@ProjectManagerUser', JSON.stringify(user));
+    localStorage.setItem('@ProjectManagerToken', token);
+
+    setData({
+      user,
+      token,
+    })
+  }, []);
 
   return (
     <AuthContext.Provider value={{ signInDev, user: data.user }}>

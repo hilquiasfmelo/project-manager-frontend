@@ -6,12 +6,15 @@ import { Router } from './routes';
 
 import { GlobalStyle } from './styles';
 import 'react-notifications-component/dist/theme.css';
+import { AppProvider } from './context';
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ReactNotifications />
-      <Router />
+      <AppProvider>
+        <Router />
+      </AppProvider>
       <GlobalStyle />
     </BrowserRouter>
   );
