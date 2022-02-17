@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useState } from "react";
+
 import { ICredentialsDev } from "../interfaces/ICredentialsDev";
+
 import { api } from "../services/api";
 
 /**
@@ -30,7 +32,10 @@ interface IAuthStateResponse {
 // Criação do Contexto de Autenticação que se disponibilizará para toda a aplicação
 export const AuthContext = createContext<IAuthContextState>({} as IAuthContextState);
 
-// Função que receberá o contexto e se disponibilizará para toda a aplicação
+/**
+ * Função que receberá o contexto e se disponibilizará para toda a aplicação
+ * dentro do arquivo principal App.tsx
+ */
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<IAuthStateResponse>(() => {
     // Guarda as variáveis no LocalStorage do Navegador
