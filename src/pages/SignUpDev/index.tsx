@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaUserAlt } from 'react-icons/fa';
 import { Store } from 'react-notifications-component';
 
@@ -11,7 +11,7 @@ import { IDevForm } from '../../interfaces/IDevForm';
 import { api } from '../../services/api';
 
 export const SignUpDev: React.FC = () => {
-  const navigation = useNavigate();
+  const history = useHistory();
 
   const [model, setModel] = useState<IDevForm>({
     name: '',
@@ -49,7 +49,7 @@ export const SignUpDev: React.FC = () => {
       });
 
       // Envia o user cadastrado para login
-      navigation('/sign-in/dev');
+      history.push('/sign-in/dev');
     } catch (err) {
       Store.addNotification({
         title: "Error",
@@ -65,7 +65,7 @@ export const SignUpDev: React.FC = () => {
         }
       });
     }
-  }, [model, navigation]);
+  }, [model, history]);
 
   return (
     <Container>

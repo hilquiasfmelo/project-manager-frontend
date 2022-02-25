@@ -8,9 +8,11 @@ import { api } from "../services/api";
  * Interface que recebe os métodos e variáveis
  * que serão disponibilizados globalmente.
  */
-interface IAuthContextState {
+export interface IAuthContextState {
   user: IUser;
+  token: string;
   signInDev(credentials: ICredentialsDev): Promise<void>;
+  signOut(): void;
 }
 
 // Interface que recebera os atributos do user
@@ -66,8 +68,16 @@ export const AuthProvider: React.FC = ({ children }) => {
     })
   }, []);
 
+  // Função que deslogará o user da aplicação
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@ProjectManagerUser');
+    localStorage.removeItem('@ProjectManagerToken');
+
+    setData({} as IAuthStateResponse)
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ signInDev, user: data.user }}>
+    <AuthContext.Provider value={{ signInDev, signOut, user: data.user, token: data.token }}>
       {children}
     </AuthContext.Provider>
   )

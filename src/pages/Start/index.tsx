@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FaCode, FaUser } from 'react-icons/fa';
 
 import { Container, EntryCard, EntryCardItem } from './styles';
@@ -7,11 +7,11 @@ import { Container, EntryCard, EntryCardItem } from './styles';
 import logo from '../../assets/logo.png';
 
 export const Start: React.FC = () => {
-  const navigation = useNavigate();
+  const history = useHistory();
 
   const navigate = useCallback((path: string) => {
-    navigation(path)
-  }, [navigation])
+    history.push(path)
+  }, [history])
 
   return (
     <Container>

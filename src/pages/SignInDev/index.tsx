@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { Store } from 'react-notifications-component';
@@ -7,12 +7,13 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import { ICredentialsDev } from '../../interfaces/ICredentialsDev';
-import { AuthContext } from '../../context/auth';
+
+import { useAuth } from '../../hooks/auth';
 
 import { Container, Content, Background, Form, FormActions } from './styles';
 
 export const SignInDev: React.FC = () => {
-  const { user, signInDev } = useContext(AuthContext);
+  const { user, signInDev } = useAuth();
 
   const [model, setModel] = useState<ICredentialsDev>({
     email: '',
@@ -43,7 +44,7 @@ export const SignInDev: React.FC = () => {
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
-          duration: 2000,
+          duration: 3000,
           onScreen: true
         }
       });
@@ -58,7 +59,7 @@ export const SignInDev: React.FC = () => {
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
-          duration: 2000,
+          duration: 3000,
           onScreen: true
         }
       });
